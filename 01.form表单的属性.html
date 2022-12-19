@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- action指定发送位置 target是窗口打开的方式，指定在何处打开action URL,method指定数据如何发送到服务器 -->
+  <form action="/login" target="_blank">
+    <!-- name属性规定input元素的名称,对提交后的表单数据进行标识 -->
+    <input type="text" name="email_or_mobile">
+    <input type="password" name="password">
+    <!-- button共有三种属性，分别为提交，按钮（可以点击），和重置 -->
+    <button type="submit">提交</button>
+  </form>
+</body>
+
+</html>

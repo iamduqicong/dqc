@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 1. 导入模板引擎 -->
+  <!-- 在 window 全局，多一个函数，叫做 template('模板的Id', 需要渲染的数据对象) -->
+  <script src="./lib/template-web.js"></script>
+  <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+  <div id="container"></div>
+  
+ 
+  <!-- 开始定义模板，其HTML结构必须定义到script中 -->
+  <script type="text/html" id="tpl-user">
+     <h1>{{name}}  ---------   {{age}}</h1>
+     {{@ test}}
+  <div>
+    {{if flag===0}}
+    flag的值是0
+    {{else if flag===1}}
+    flag的值是1
+    {{/if}}
+  </div>
+
+  <ul>
+    {{each hobby}}
+    <li>索引是:{{$index}},循环项是:{{$value}}</li>
+    {{/each}}
+  </ul>
+    
+  <!-- 这个是过滤器 -->
+  <h3>{{regtime|dateFormat}}</h3>
+  </script>
+
+<script>
+
+  // 定义过滤器
+    template.defaults.imports.dateFormat=function(date){
+      var y=date.getFullYear()
+      var m=date.getMonth()+1
+      var d=date.getDate()
+
+      return y+'-'+m+'-'+d
+    }
+
+    var data={#}
+
+// 调用template函数
+var htmlStr=template('tpl-user',data)
+console.log(htmlStr)
+// 渲染html结构
+$('#container').html(htmlStr)
+</script>
+</body>
+
+</html>
